@@ -68,6 +68,50 @@ def sort_by_first_digital(nums):
     return nums
 
 
+def reverse_bin(integer):
+    """
+    :param integer: input an integer
+    :return: reversion of 32-bit binnary string converted from integer.
+    leetcode 190:颠倒二进制位 eg interger = 5 , it's bin is: 00000000 00000000 00000000 00000101  then return：10100000 00000000 00000000 00000000
+    """
+    bin_str = bin(integer).replace('0b', '').zfill(32)
+    reverse_bin_str = ''.join(reverse(list(bin_str)))
+    return  reverse_bin_str
+
+
+def reverse(list_str):
+    start = 0
+    end = len(list_str) - 1
+    print(list_str)
+    while start < end:
+        temp = list_str[start]
+        list_str[start] = list_str[end]
+        list_str[end] = temp
+        start += 1
+        end -= 1
+    print(list_str)
+    return  list_str
+
+
+def reverseBits(n):
+    bin_str = bin(n).replace('0b', '').zfill(32)
+    bin_str = list(bin_str)
+    start = 0
+    end = len(bin_str) - 1
+    print(bin_str)
+    while start < end:
+        temp = bin_str[start]
+        bin_str[start] = bin_str[end]
+        bin_str[end] = temp
+        start += 1
+        end -= 1
+    reverse_bin_str = ''.join(bin_str)
+    return reverse_bin_str
+
+
+
+
+
 # 以下 test 开头的函数是单元测试
 def test_rotate():
     """
@@ -116,10 +160,17 @@ def test_max_array_number():
         print("test successfully")
 
 
+def test_reverse_bin():
+    test_case = [(5, '10100000000000000000000000000000')]
+    for items in test_case:
+        input_integer, expected = items
+        # reverse_bin_str = reverse_bin(input_integer)
+        reverse_bin_str = reverseBits(input_integer)
+        error = 'input integer: {}, expected value: {}, actual value: {}'.format(input_integer, expected, reverse_bin_str)
+        assert expected == reverse_bin_str, error
+
 if __name__ == '__main__':
-    #test_rotate()
-    #print('test')
-    test_max_array_number()
-
-
-
+    # test_rotate()
+    # print('test')
+    # test_max_array_number()
+    test_reverse_bin()
