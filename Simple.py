@@ -68,6 +68,9 @@ def sort_by_first_digital(nums):
     return nums
 
 
+
+
+
 def reverse_bin(integer):
     """
     :param integer: input an integer
@@ -109,10 +112,17 @@ def reverseBits(n):
     return reverse_bin_str
 
 
+def decorator_test(fun):
+    def wrapper():
+        print('start function')
+        fun()
+        print('test successfully')
+    return wrapper
 
 
 
 # 以下 test 开头的函数是单元测试
+@decorator_test
 def test_rotate():
     """
     parsed_url 函数很容易出错, 所以我们写测试函数来运行看检测是否正确运行
@@ -146,8 +156,8 @@ def test_rotate():
         rotate_array = rotate(nums, k)
         error = "rotate faily: {}, {}, expected:{}, rotate:{}".format(before_rotate, k,correct_case, rotate_array)
         assert correct_case == rotate_array, error
-        print("test successfully")
-
+        #print("test successfully")
+@decorator_test
 def test_max_array_number():
     test_case = [([13, 45, 67], '765431')]
     print(test_case)
@@ -157,15 +167,15 @@ def test_max_array_number():
         max_number = max_array_number(input_list)
         error = 'input:{} expected: {} output:{}'.format(input_value, expected_value, max_number)
         assert expected_value == max_number, error
-        print("test successfully")
+        #print("test successfully")
 
-
+@decorator_test
 def test_reverse_bin():
     test_case = [(5, '10100000000000000000000000000000')]
     for items in test_case:
         input_integer, expected = items
-        # reverse_bin_str = reverse_bin(input_integer)
-        reverse_bin_str = reverseBits(input_integer)
+        reverse_bin_str = reverse_bin(input_integer)
+        # reverse_bin_str = reverseBits(input_integer)
         error = 'input integer: {}, expected value: {}, actual value: {}'.format(input_integer, expected, reverse_bin_str)
         assert expected == reverse_bin_str, error
 
