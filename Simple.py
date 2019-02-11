@@ -37,7 +37,7 @@ def sort_number(number):
     #print(number_array)
     return ''.join(sort(number_array))
 
-
+#选择排序
 def sort(number_array):
     """
     :param number_array: digital list
@@ -119,6 +119,46 @@ def decorator_test(fun):
         print('test successfully')
     return wrapper
 
+def fib(n):
+    """
+
+    :param n:
+    :return: 返回索引为n 的斐波那契数列
+    """
+    #print('before', n)
+    if n == 0 or n == 1:
+        #print(n)
+        return 1
+    else:
+        #print('after else', n)
+        return fib(n-1) + fib(n-2)
+
+def fibAll(n):
+    """
+
+    :param n:
+    :return: 生成器生成索引为1至n的斐波那契数列
+    """
+    while n >= 0:
+        #print(fib(n) , ' ')
+        yield  fib(n)
+        n = n-1
+
+def fibSelectBy(max):
+    """
+
+    :param max:
+    :return: 斐波那契数列中和max 相差最小的数
+    """
+    n = 0
+    fib(n)
+    while fib(n) < max:
+        n = n + 1
+        fib(n)
+    if max - fib(n) > fib(n+1) - max:
+        return fib(n+1)
+    else:
+        return fib(n)
 
 
 # 以下 test 开头的函数是单元测试
@@ -183,4 +223,15 @@ if __name__ == '__main__':
     # test_rotate()
     # print('test')
     # test_max_array_number()
-    test_reverse_bin()
+    #test_reverse_bin()
+    for x in fibAll(6):
+        #print(x)
+        #print('done')
+        print(x)
+
+    gen = fibAll(7)
+    print(next(gen))
+    print(next(gen))
+    print(next(gen))
+    #print(fib(6))
+
