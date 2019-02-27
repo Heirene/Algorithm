@@ -52,6 +52,15 @@ def sort(number_array):
         print('after sort each number:',number_array)
     return number_array
 
+#冒泡排序
+def bubble_sort(array):
+    for i in range(0, len(array)):
+        for j in range(i + 1, len(array)):
+            if array[i] > array[j]:
+                temp = array[i]
+                array[i] = array[j]
+                array[j] = temp
+    return array
 
 def sort_by_first_digital(nums):
     """
@@ -224,14 +233,20 @@ if __name__ == '__main__':
     # print('test')
     # test_max_array_number()
     #test_reverse_bin()
-    for x in fibAll(6):
-        #print(x)
-        #print('done')
-        print(x)
+    # for x in fibAll(6):
+    #     #print(x)
+    #     #print('done')
+    #     print(x)
 
-    gen = fibAll(7)
-    print(next(gen))
-    print(next(gen))
-    print(next(gen))
+    # gen = fibAll(7)
+    # print(next(gen))
+    # print(next(gen))
+    # print(next(gen))
+    array = [5,3,4, 1, 2]
+    bubble_sort(array)
+    print('after bubble sort: ', array)
+
+
+
     #print(fib(6))
 
