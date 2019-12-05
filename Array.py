@@ -26,5 +26,6 @@ if __name__ == "__main__":
     array[0] = 5
     print(array[0])
     print('test revert')
+    print('ttttttttest revert')
 
 
