@@ -11,7 +11,7 @@ class Array:
         return len(self._data)
 
     def __setitem__(self, index: int, value: object):
-        self.data[index] = value
+        self._data[index] = value
 
     def insert(self, index: int, value: int) -> bool:
         if len(self) >= self._capacity:
@@ -23,4 +23,7 @@ if __name__ == "__main__":
     array = Array(5)
     array.insert(0,1)
     print(array[0])
+    array[0] = 5
+    print(array[0])
+
 
