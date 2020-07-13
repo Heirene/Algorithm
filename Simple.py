@@ -53,14 +53,19 @@ def sort(number_array):
     return number_array
 
 #冒泡排序
-def bubble_sort(array):
-    for i in range(0, len(array)):
-        for j in range(i + 1, len(array)):
-            if array[i] > array[j]:
-                temp = array[i]
-                array[i] = array[j]
-                array[j] = temp
-    return array
+def bubble_sort(a: List[int]):
+    length = len(a)
+    if length <= 1:
+        return
+
+    for i in range(length):
+        made_swap = False
+        for j in range(length - i - 1):
+            if a[j] > a[j + 1]:
+                a[j], a[j + 1] = a[j + 1], a[j]
+                made_swap = True
+        if not made_swap:
+            breakhhhhh
 
 def sort_by_first_digital(nums):
     """
